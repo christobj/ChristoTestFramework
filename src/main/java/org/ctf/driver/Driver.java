@@ -1,7 +1,8 @@
 package org.ctf.driver;
 
 import org.ctf.constants.FrameworkConstants;
-import org.ctf.utils.PropertyReader;
+import org.ctf.enums.CoreConfigProperties;
+import org.ctf.utils.PropertyReaderUtil;
 import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.Objects;
 
@@ -15,7 +16,7 @@ public final class Driver {
         if (Objects.isNull(DriverFactory.getDriver())) {
             System.setProperty("webdriver.chrome.driver", FrameworkConstants.getChromedriverpath());
             DriverFactory.setDriver(new ChromeDriver());
-            DriverFactory.getDriver().get(PropertyReader.getValue("url"));
+            DriverFactory.getDriver().get(PropertyReaderUtil.getValue(CoreConfigProperties.URL));
         }
     }
 

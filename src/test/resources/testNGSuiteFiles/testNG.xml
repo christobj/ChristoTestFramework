@@ -3,8 +3,8 @@
 <suite name="ChristoTest" thread-count="3" parallel="methods">
     <test name="Regression">
         <classes>
-            <class name="org.ctf.testcases.LoginPageTest"/>
-            <class name="org.ctf.testcases.HomePageTest"/>
+            <class name="org.ctf.testcases.orangeHRM.LoginPageTest"/>
+            <class name="org.ctf.testcases.orangeHRM.AdminPageTest"/>
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->
