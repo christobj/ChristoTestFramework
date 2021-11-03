@@ -6,6 +6,7 @@ import org.ctf.enums.CoreConfigProperties;
 import org.ctf.utils.PropertyReaderUtil;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.remote.Browser;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -34,8 +35,10 @@ public final class Driver {
                     }
                 }
                 else {
+                    ChromeOptions chromeOptions = new ChromeOptions();
+                    chromeOptions.setHeadless(true);
                     WebDriverManager.chromedriver().setup();
-                    DriverFactory.setDriver(new ChromeDriver());
+                    DriverFactory.setDriver(new ChromeDriver(chromeOptions));
                 }
             } else if (PropertyReaderUtil.getValue(CoreConfigProperties.BROWSER).equalsIgnoreCase("edge")) {
                 if (PropertyReaderUtil.getValue(CoreConfigProperties.EXECUTIONMODE).equalsIgnoreCase("remote")) {
