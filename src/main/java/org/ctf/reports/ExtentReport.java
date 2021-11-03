@@ -15,14 +15,14 @@ public final class ExtentReport {
 
     private static ExtentReports extentReports;
 
-    public static void intiExtentReport() {
+    public static void intiExtentReport(String name) {
         if (Objects.isNull(extentReports)) {
             extentReports = new ExtentReports();
             ExtentSparkReporter extentReporter = new ExtentSparkReporter(FrameworkConstants.getPathtoextentreports());
             extentReports.attachReporter(extentReporter);
             extentReporter.config().setTheme(Theme.DARK);
-            extentReporter.config().setReportName("Orange HRM");
-            extentReporter.config().setDocumentTitle("ChristoTestFW");
+            extentReporter.config().setReportName(name);
+            extentReporter.config().setDocumentTitle(name);
             extentReporter.config().setTimelineEnabled(true);
         }
     }
