@@ -26,6 +26,15 @@ public class AdminPage extends BasePage {
     @FindBy (id = "searchSystemUser_userType")
     private WebElement selectUserType;
 
+    @FindBy (id = "searchSystemUser_status")
+    private WebElement selectUserStatus;
+
+    @FindBy (id = "searchSystemUser_employeeName_empName")
+    private WebElement searchEmployeeName;
+
+    @FindBy (xpath = "//div[@class='ac_results']//li")
+    private List<WebElement> list;
+
     private WebElement getUser (String username) {
         String gridUserList = "//div[@id='tableWrapper']//a[contains(text(),'user')]";
         return getDriver().findElement(By.xpath(gridUserList.replace("user",username)));
@@ -47,8 +56,11 @@ public class AdminPage extends BasePage {
     }
 
     private void selectUserType (String type) {
-        Select select = new Select(selectUserType);
-        select.selectByVisibleText(type);
+        select(selectUserType,type);
+    }
+
+    private void selectUserStatus (String status) {
+        select(selectUserStatus,status);
     }
 
     private void search() {
@@ -74,6 +86,20 @@ public class AdminPage extends BasePage {
         } else if (type.equalsIgnoreCase("All") &&
                 (getUserTypeElement("Admin").isDisplayed() && getUserTypeElement("ESS").isDisplayed())) {
                 isFilterProper = true;
+        }
+        return isFilterProper;
+    }
+
+    public boolean searchUserStatus(String status) {
+        boolean isFilterProper = false;
+        selectUserStatus(status);
+        search();
+        if (status.equalsIgnoreCase("Enabled") || status.equalsIgnoreCase("Disabled")) {
+            if (getUserType(status).size() == getUserCount())
+                isFilterProper = true;
+        } else if (status.equalsIgnoreCase("All") &&
+                (getUserTypeElement("Enabled").isDisplayed() || getUserTypeElement("Disabled").isDisplayed())) {
+            isFilterProper = true;
         }
         return isFilterProper;
     }
