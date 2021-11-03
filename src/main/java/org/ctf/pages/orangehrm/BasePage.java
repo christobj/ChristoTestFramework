@@ -1,8 +1,10 @@
 package org.ctf.pages.orangehrm;
 
 import org.ctf.driver.DriverFactory;
+import org.ctf.reports.ExtentLogger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 public class BasePage {
 
@@ -29,6 +31,16 @@ public class BasePage {
         element.sendKeys(value);
     }
 
+    protected void sendKeysSlowly(WebElement element, String value) {
+        element.clear();
+        for (int i=0 ; i< value.length() ; i++) {
+            char c = value.charAt(i);
+            String s = new StringBuilder().append(c).toString();
+            element.sendKeys(s);
+            sleep(1);
+        }
+    }
+
     protected boolean clickOn (WebElement element) {
         boolean isClickSuccess = true;
         try {
@@ -48,5 +60,10 @@ public class BasePage {
                 sleep(1);
             withInSeconds--;
         }
+    }
+
+    protected void select(WebElement element, String text) {
+        Select select = new Select(element);
+        select.selectByVisibleText(text);
     }
 }

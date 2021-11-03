@@ -5,7 +5,6 @@ import org.ctf.enums.CoreConfigProperties;
 
 import java.io.FileInputStream;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Properties;
 
 public final class PropertyReaderUtil {
@@ -18,8 +17,7 @@ public final class PropertyReaderUtil {
     private static final HashMap<String, String> CONFIGMAP = new HashMap<>();
 
     static {
-        try {
-            FileInputStream fileInputStream = new FileInputStream(FrameworkConstants.getConfigpropertypath());
+        try(FileInputStream fileInputStream = new FileInputStream(FrameworkConstants.getConfigpropertypath())) {
             properties.load(fileInputStream);
             properties.entrySet().forEach(entrySet ->
                     CONFIGMAP.put(String.valueOf(entrySet.getKey()), String.valueOf(entrySet.getValue()).trim()));
