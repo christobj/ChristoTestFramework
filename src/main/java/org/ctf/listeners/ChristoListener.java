@@ -12,7 +12,7 @@ public class ChristoListener implements ITestListener, ISuiteListener {
 
     @Override
     public void onStart(ISuite suite) {
-        ExtentReport.intiExtentReport(suite.getName());
+        ExtentReport.intiExtentReport(suite.getXmlSuite().getName());
     }
 
     @Override

@@ -9,7 +9,7 @@
     <test name="Regression">
         <classes>
             <class name="org.ctf.testcases.orangeHRM.LoginPageTest"/>
-            <class name="org.ctf.testcases.orangeHRM.AdminPageTest"/>
+            <!-- <class name="org.ctf.testcases.orangeHRM.AdminPageTest"/> -->
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->

@@ -59,7 +59,7 @@
                     <version>3.0.0-M5</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>src/test/resources/testNGSuiteFiles/testNG.xml</suiteXmlFile>
+                        <suiteXmlFile>${suiteXmlFiles}</suiteXmlFile>
                     </suiteXmlFiles>
                     <properties>
                         <property>
